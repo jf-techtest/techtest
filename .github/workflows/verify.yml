@@ -18,16 +18,14 @@ jobs:
           node-version: 18
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
 
       - name: Start App Server
         run: |
           npx http-server -p 3000 &
 
       - name: Wait for Server
-        run: npx wait-on http://localhost:3000
+        run: ./node_modules/.bin/wait-on http://localhost:3000
 
       - name: Run Cypress Tests
         run: npx cypress run
-
-        #
