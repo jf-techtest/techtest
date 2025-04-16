@@ -7,7 +7,8 @@ describe('increment-test', () => {
 
   it('increments when clicking the increment button', () => {
     cy.get('#increment-btn').click()
-
     cy.get('#counter').should('have.text', '1');
   });
 });
+
+
