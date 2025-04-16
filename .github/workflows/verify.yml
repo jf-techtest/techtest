@@ -1,0 +1,31 @@
+name: Verify
+
+on:
+  pull_request:
+
+jobs:
+  cypress-tests:
+    name: Run Cypress Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Start App Server
+        run: |
+          npx http-server -p 3000 &
+
+      - name: Wait for Server
+        run: npx wait-on http://localhost:3000
+
+      - name: Run Cypress Tests
+        run: npx cypress run
