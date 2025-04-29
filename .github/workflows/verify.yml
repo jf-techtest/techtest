@@ -1,19 +1,25 @@
 name: Verify
 
-on: [push]
+on:
+  push:
+  pull_request:
 
 jobs:
-  install:
+  verify:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
 
-      - name: Cypress run
-        uses: cypress-io/github-action@v3
+    steps:
+      - name: 🧾 Checkout code
+        uses: actions/checkout@v3
+
+      - name: 🟢 Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          project: ./site
-          browser: chrome
-          build: yarn build
-          start: yarn start
-          wait-on: "http://localhost:3000"
+          node-version: 18           
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: npm install
+
+      - name: 🧪 Run tests
+        run: npm test  
