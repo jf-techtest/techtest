@@ -1,15 +1,18 @@
 {
-    "name": "mini-project",
+    "name": "project",
     "version": "1.0.0",
-    "devDependencies": {
-        "http-server": "^14.1.1",
-        "wait-on": "^8.0.3"
+    "private": true,
+    "scripts": {
+      "test": "cypress run",
+      "start": "react-scripts start",
+      "build": "react-scripts build"
     },
     "dependencies": {
-        "cypress": "^14.3.0",
-        "react-scripts": "4.0.3"  
+      "cypress": "^14.3.0",
+      "react-scripts": "^5.0.1"
     },
-    "scripts": {
-        "test": "cypress run"
-}
-}
+    "devDependencies": {
+      "http-server": "^14.1.1",
+      "wait-on": "^8.0.3"
+    }
+  }
