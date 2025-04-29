@@ -23,3 +23,9 @@ jobs:
 
       - name: 🧪 Run tests
         run: npm test  
+
+      - name: 🧰 Install Cypress binary (fix CI error)
+        run: npx cypress install
+
+      - name: 🧪 Run Cypress tests
+        run: npx cypress run
